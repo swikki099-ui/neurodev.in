@@ -39,30 +39,34 @@ export async function POST(req: Request) {
         <html>
           <head>
             <style>
-              .container { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto; background-color: #f8fafc; border-radius: 24px; overflow: hidden; border: 1px solid #e2e8f0; }
-              .header { background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%); padding: 40px 20px; text-align: center; color: white; }
-              .logo { width: 48px; height: 48px; background: white; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; font-weight: 900; color: #4f46e5; font-size: 20px; margin-bottom: 16px; }
+              @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@700&family=Patrick+Hand&display=swap');
+              body { background-color: #fdfbf7; padding: 20px; font-family: 'Patrick Hand', 'Comic Sans MS', cursive, sans-serif; color: #2d2d2d; }
+              .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; border: 4px solid #2d2d2d; box-shadow: 8px 8px 0px 0px #2d2d2d; padding: 0; position: relative; border-radius: 20px 5px 20px 5px / 5px 20px 5px 20px; overflow: hidden; }
+              .header { background-color: #fff9c4; padding: 40px 20px; text-align: center; border-bottom: 4px solid #2d2d2d; }
+              .logo { width: 50px; height: 50px; background: #e5e0d8; border: 3px solid #2d2d2d; display: inline-flex; align-items: center; justify-content: center; font-weight: 900; color: #2d2d2d; font-size: 24px; font-family: 'Kalam', cursive; box-shadow: 4px 4px 0px 0px #2d2d2d; margin-bottom: 20px; border-radius: 10px 3px 10px 3px / 3px 10px 3px 10px; }
               .content { padding: 40px 30px; background: white; }
-              .section-title { font-size: 14px; font-weight: 900; color: #64748b; text-transform: uppercase; letter-spacing: 0.1em; margin: 30px 0 15px; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px; }
-              .data-row { margin-bottom: 20px; }
-              .label { font-size: 12px; font-weight: 700; color: #94a3b8; text-transform: uppercase; margin-bottom: 4px; }
-              .value { font-size: 16px; font-weight: 600; color: #1e293b; line-height: 1.5; }
-              .link { color: #4f46e5; text-decoration: none; font-weight: 700; }
-              .footer { padding: 20px; text-align: center; font-size: 12px; color: #94a3b8; background-color: #f8fafc; border-top: 1px solid #e2e8f0; }
-              .badge { display: inline-block; padding: 4px 12px; border-radius: 99px; background: #e0e7ff; color: #4338ca; font-size: 12px; font-weight: 700; }
+              .section-title { font-size: 24px; font-weight: 700; color: #2d2d2d; font-family: 'Kalam', cursive; margin: 30px 0 15px; border-bottom: 3px dashed #2d2d2d; padding-bottom: 8px; text-transform: uppercase; }
+              .data-row { margin-bottom: 24px; padding: 15px; background: #fdfbf7; border: 3px solid #2d2d2d; box-shadow: 4px 4px 0px 0px #2d2d2d; border-radius: 10px 5px 15px 5px / 5px 15px 5px 10px; }
+              .label { font-size: 16px; font-weight: 700; color: #ff4d4d; text-transform: uppercase; margin-bottom: 8px; font-family: 'Kalam', cursive; }
+              .value { font-size: 18px; font-weight: 600; color: #2d2d2d; line-height: 1.5; }
+              .link { color: #2d5da1; text-decoration: underline; font-weight: 700; }
+              .footer { padding: 20px; text-align: center; font-size: 16px; color: #2d2d2d; background-color: #e5e0d8; border-top: 4px solid #2d2d2d; font-weight: bold; }
+              .badge { display: inline-block; padding: 6px 16px; border: 3px solid #2d2d2d; background: #2d5da1; color: white; font-size: 16px; font-weight: 700; box-shadow: 2px 2px 0px 0px #2d2d2d; border-radius: 5px 15px 5px 15px / 15px 5px 15px 5px; }
+              .title-text { margin: 0; font-size: 36px; font-weight: 700; font-family: 'Kalam', cursive; color: #2d2d2d; }
+              .subtitle-text { margin: 10px 0 0; font-size: 18px; font-weight: 600; color: #2d2d2d; }
             </style>
           </head>
           <body>
             <div class="container">
               <div class="header">
                 <div class="logo">ND</div>
-                <h1 style="margin: 0; font-size: 28px; font-weight: 900; letter-spacing: -0.02em;">New Pioneer Joined</h1>
-                <p style="margin: 8px 0 0; opacity: 0.9; font-weight: 500;">A new member has registered for NeroDev.</p>
+                <h1 class="title-text">New Pioneer Joined!</h1>
+                <p class="subtitle-text">A new member has registered for NeuroDev.</p>
               </div>
               
               <div class="content">
                 <div class="section-title">Basic Information</div>
-                <div class="data-row">
+                <div class="data-row" style="background-color: #ffffff;">
                   <div class="label">Full Name</div>
                   <div class="value">${data.fullName}</div>
                 </div>
@@ -70,7 +74,7 @@ export async function POST(req: Request) {
                   <div class="label">Email Address</div>
                   <div class="value"><a href="mailto:${data.email}" class="link">${data.email}</a></div>
                 </div>
-                <div class="data-row">
+                <div class="data-row" style="background-color: #ffffff;">
                   <div class="label">WhatsApp Number</div>
                   <div class="value">${data.whatsapp}</div>
                 </div>
@@ -80,15 +84,15 @@ export async function POST(req: Request) {
                 </div>
 
                 <div class="section-title">Professional Profile</div>
-                <div class="data-row">
+                <div class="data-row" style="background-color: #ffffff;">
                   <div class="label">Experience Level</div>
                   <div class="value"><span class="badge">${data.experience}</span></div>
                 </div>
                 <div class="data-row">
                   <div class="label">Projects Summary</div>
-                  <div class="value" style="background: #f1f5f9; padding: 15px; border-radius: 12px; font-weight: 500;">${data.projects}</div>
+                  <div class="value">${data.projects}</div>
                 </div>
-                <div class="data-row">
+                <div class="data-row" style="background-color: #ffffff;">
                   <div class="label">GitHub Profile</div>
                   <div class="value"><a href="${data.github}" class="link" target="_blank">${data.github}</a></div>
                 </div>
@@ -96,14 +100,14 @@ export async function POST(req: Request) {
                   <div class="label">LinkedIn Profile</div>
                   <div class="value"><a href="${data.linkedin}" class="link" target="_blank">${data.linkedin}</a></div>
                 </div>
-                <div class="data-row">
+                <div class="data-row" style="background-color: #ffffff;">
                   <div class="label">Portfolio Link</div>
                   <div class="value"><a href="${data.portfolio}" class="link" target="_blank">${data.portfolio}</a></div>
                 </div>
               </div>
 
               <div class="footer">
-                &copy; ${new Date().getFullYear()} NeroDev Community Infrastructure<br>
+                &copy; ${new Date().getFullYear()} NeuroDev Infrastructure<br>
                 Automated System Alert — Please respond within 24 hours.
               </div>
             </div>
