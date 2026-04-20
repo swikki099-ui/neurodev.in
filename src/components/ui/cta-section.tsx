@@ -32,7 +32,7 @@ export const CTASection = () => {
           </p>
 
           <div className="flex flex-col gap-6 max-w-sm">
-            <div className="flex items-center gap-4 p-4 bg-white border-[3px] border-[#2d2d2d] rounded-wobbly shadow-[4px_4px_0px_0px_#2d2d2d] -rotate-1 hover:rotate-1 transition-transform">
+            <a href="mailto:hello@neurodev.in" className="flex items-center gap-4 p-4 bg-white border-[3px] border-[#2d2d2d] rounded-wobbly shadow-[4px_4px_0px_0px_#2d2d2d] -rotate-1 hover:rotate-1 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_#2d2d2d] active:shadow-none active:translate-x-[4px] active:translate-y-[4px] transition-all">
               <div className="p-3 rounded-wobbly bg-[#e5e0d8] border-2 border-[#2d2d2d]">
                 <Mail className="h-6 w-6 text-[#2d2d2d]" strokeWidth={2.5} />
               </div>
@@ -40,9 +40,9 @@ export const CTASection = () => {
                 <p className="text-sm font-heading font-bold text-[#ff4d4d] uppercase tracking-wide">Email Us</p>
                 <p className="font-sans font-bold text-xl text-[#2d2d2d]">hello@neurodev.in</p>
               </div>
-            </div>
+            </a>
             
-            <div className="flex items-center gap-4 p-4 bg-white border-[3px] border-[#2d2d2d] rounded-wobbly shadow-[4px_4px_0px_0px_#2d2d2d] rotate-1 hover:-rotate-1 transition-transform">
+            <a href="https://linkedin.com/in/neurodev" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-4 bg-white border-[3px] border-[#2d2d2d] rounded-wobbly shadow-[4px_4px_0px_0px_#2d2d2d] rotate-1 hover:-rotate-1 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_#2d2d2d] active:shadow-none active:translate-x-[4px] active:translate-y-[4px] transition-all">
               <div className="p-3 rounded-wobbly bg-[#e5e0d8] border-2 border-[#2d2d2d]">
                 <Linkedin className="h-6 w-6 text-[#2d2d2d]" strokeWidth={2.5} />
               </div>
@@ -50,7 +50,7 @@ export const CTASection = () => {
                 <p className="text-sm font-heading font-bold text-[#2d5da1] uppercase tracking-wide">Connect</p>
                 <p className="font-sans font-bold text-xl text-[#2d2d2d]">linkedin.com/neurodev</p>
               </div>
-            </div>
+            </a>
           </div>
         </motion.div>
 

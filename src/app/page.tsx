@@ -15,14 +15,20 @@ import {
   User, 
   Cpu, 
   Globe, 
+  Info,
+  Rocket
 } from "lucide-react";
 import confetti from "canvas-confetti";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
   const navItems = [
     { name: "Home", link: "/#home", icon: <HomeIcon className="h-4 w-4" /> },
     { name: "Features", link: "/#features", icon: <Cpu className="h-4 w-4" /> },
     { name: "Community", link: "/#community", icon: <Globe className="h-4 w-4" /> },
+    { name: "About", link: "/about", icon: <Info className="h-4 w-4" /> },
+    { name: "Register", link: "/register", icon: <Rocket className="h-4 w-4" /> },
   ];
 
   const placeholders = [
@@ -34,7 +40,7 @@ export default function Home() {
   ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
+    // optional logging
   };
   
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -45,7 +51,11 @@ export default function Home() {
       origin: { y: 0.6 },
       colors: ["#ff4d4d", "#2d2d2d", "#2d5da1"],
     });
-    console.log("submitted");
+    
+    // Redirect to register page after short delay for confetti
+    setTimeout(() => {
+      router.push("/register");
+    }, 800);
   };
 
   return (

@@ -15,7 +15,7 @@ export const Footer = () => {
 
       <div className="max-w-6xl mx-auto flex flex-col gap-12 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex items-center gap-4 group cursor-pointer hover:rotate-1 transition-transform">
+          <Link href="/" className="flex items-center gap-4 group cursor-pointer hover:rotate-1 transition-transform">
             <div className="h-14 w-14 rounded-wobbly border-[3px] border-[#2d2d2d] bg-[#fff9c4] flex items-center justify-center text-[#2d2d2d] font-heading font-black text-2xl shadow-[4px_4px_0px_0px_#2d2d2d] group-hover:bg-[#ff4d4d] group-hover:text-white transition-colors rotate-3">
               ND
             </div>
@@ -23,11 +23,12 @@ export const Footer = () => {
               <h3 className="text-3xl font-heading font-black text-[#2d2d2d] tracking-tight hover:underline decoration-wavy decoration-[#ff4d4d]">NEURODEV.IN</h3>
               <p className="text-lg font-sans font-bold text-[#ff4d4d]">Advancing AI Engineering</p>
             </div>
-          </div>
+          </Link>
 
           <div className="flex items-center gap-6 flex-wrap justify-center">
             <Link href="/" className="text-xl font-heading font-bold text-[#2d2d2d] hover:text-[#ff4d4d] hover:line-through transition-colors">HOME</Link>
             <Link href="/about" className="text-xl font-heading font-bold text-[#2d2d2d] hover:text-[#ff4d4d] hover:line-through transition-colors">ABOUT US</Link>
+            <Link href="/register" className="text-xl font-heading font-bold text-[#2d2d2d] hover:text-[#ff4d4d] hover:line-through transition-colors">REGISTER</Link>
             <a href="https://chaursia.in" target="_blank" rel="noopener noreferrer" className="text-xl font-heading font-bold text-[#2d2d2d] hover:text-[#ff4d4d] hover:line-through transition-colors border-[2px] border-[#2d2d2d] px-3 py-1 rounded-wobbly shadow-[2px_2px_0px_0px_#2d2d2d] bg-white -rotate-2">PORTFOLIO</a>
           </div>
         </div>
