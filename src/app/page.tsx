@@ -114,7 +114,7 @@ export default function Home() {
       {/* Footer Addition */}
       <Footer />
 
-      <BackgroundBeams className="opacity-10" />
+      <BackgroundBeams className="opacity-10 pointer-events-none" />
     </main>
   );
 }
