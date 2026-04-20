@@ -73,18 +73,6 @@ export default function Home() {
             transition={{ duration: 0.5, ease: [0.4, 0.0, 0.2, 1] }}
             className="flex flex-col items-center justify-center px-4 text-center max-w-4xl mx-auto relative z-10"
           >
-            {/* Hand-drawn decoration */}
-            <motion.div 
-              animate={{ y: [0, -10, 0] }}
-              transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-              className="absolute -top-12 -right-12 hidden md:block"
-            >
-              <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M50 10C27.9 10 10 27.9 10 50C10 72.1 27.9 90 50 90C72.1 90 90 72.1 90 50" stroke="#ff4d4d" strokeWidth="6" strokeLinecap="round" strokeDasharray="10 10"/>
-                <path d="M40 40L60 60M60 40L40 60" stroke="#ff4d4d" strokeWidth="6" strokeLinecap="round"/>
-              </svg>
-            </motion.div>
-
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-heading text-[#2d2d2d] mb-6 tracking-normal">
               Building the Future <br /> 
               <span className="text-[#ff4d4d] inline-block -rotate-2">
