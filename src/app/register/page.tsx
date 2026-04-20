@@ -27,14 +27,14 @@ const countries = [
 
 const InputField = ({ label, icon, ...props }: any) => (
   <div className="flex flex-col gap-2 w-full">
-    <label className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest ml-1">{label}</label>
+    <label className="text-sm font-heading font-bold text-[#2d2d2d] uppercase tracking-wide ml-1">{label}</label>
     <div className="relative group">
-      <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-indigo-500 transition-colors">
+      <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2d2d2d] transition-colors z-10">
         {icon}
       </div>
       <input
         {...props}
-        className="w-full pl-12 pr-4 py-4 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-white/5 focus:border-indigo-500 dark:focus:border-indigo-500 outline-none transition-all shadow-sm font-medium"
+        className="w-full pl-12 pr-4 py-4 rounded-wobbly bg-white border-[3px] border-[#2d2d2d] focus:border-[#2d5da1] focus:ring-2 focus:ring-[#2d5da1]/20 outline-none transition-all shadow-[2px_2px_0px_0px_#2d2d2d] font-sans font-bold text-lg text-[#2d2d2d] placeholder:text-[#2d2d2d]/40"
       />
     </div>
   </div>
@@ -122,7 +122,7 @@ export default function Register() {
           particleCount: 150,
           spread: 70,
           origin: { y: 0.6 },
-          colors: ["#4f46e5", "#3b82f6", "#ffffff"]
+          colors: ["#ff4d4d", "#2d2d2d", "#2d5da1", "#fff9c4"]
         });
         setStep(3); // Keep this to transition to the success screen
       } else {
@@ -137,7 +137,7 @@ export default function Register() {
   };
 
   return (
-    <main className="relative min-h-screen w-full bg-slate-50 dark:bg-slate-950 overflow-x-hidden pt-28">
+    <main className="relative min-h-screen w-full bg-transparent overflow-x-hidden pt-28">
       <FloatingNav navItems={[
         { name: "Home", link: "/", icon: <Globe className="h-4 w-4" /> },
         { name: "Back", link: "/", icon: <ArrowLeft className="h-4 w-4" /> },
@@ -145,21 +145,24 @@ export default function Register() {
 
       <div className="max-w-3xl mx-auto px-4 py-10 relative z-10">
         {/* Progress Header */}
-        <div className="mb-12 text-center">
+        <div className="mb-12 text-center relative">
           <motion.h1 
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-4 tracking-tighter"
+            className="text-5xl md:text-6xl font-heading font-black text-[#2d2d2d] mb-4 tracking-tight -rotate-1 inline-block"
           >
-            Become a <span className="bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent">NeuroDev.</span>
+            Become a <span className="text-[#ff4d4d] underline decoration-wavy decoration-[#2d5da1]">NeuroDev.</span>
           </motion.h1>
-          <div className="flex items-center justify-center gap-2">
+          
+          <div className="flex items-center justify-center gap-4 mt-6">
             {[1, 2, 3].map((s) => (
               <div 
                 key={s} 
                 className={cn(
-                  "h-1.5 rounded-full transition-all duration-500",
-                  step >= s ? "w-12 bg-indigo-600 shadow-[0_0_10px_rgba(79,70,229,0.5)]" : "w-4 bg-slate-200 dark:bg-slate-800"
+                  "transition-all duration-500 rounded-wobbly border-2 border-[#2d2d2d]",
+                  step >= s 
+                    ? "h-4 w-12 bg-[#ff4d4d] shadow-[2px_2px_0px_0px_#2d2d2d]" 
+                    : "h-3 w-8 bg-[#e5e0d8]"
                 )}
               />
             ))}
@@ -173,21 +176,24 @@ export default function Register() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
-              className="p-8 md:p-12 rounded-[3.5rem] bg-white dark:bg-slate-900/40 border border-slate-100 dark:border-white/5 shadow-2xl backdrop-blur-xl"
+              className="p-8 md:p-12 rounded-wobbly-md bg-white border-[4px] border-[#2d2d2d] shadow-[8px_8px_0px_0px_#2d2d2d] relative rotate-1"
             >
-              <h2 className="text-2xl font-black text-slate-900 dark:text-white mb-8 flex items-center gap-3">
-                <div className="p-2 rounded-xl bg-indigo-50 dark:bg-indigo-500/10">
-                  <User className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />
+              {/* Tape */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-8 bg-black/10 -rotate-2 z-10 backdrop-blur-sm" />
+
+              <h2 className="text-3xl font-heading font-black text-[#2d2d2d] mb-8 flex items-center gap-3">
+                <div className="p-2 rounded-wobbly bg-[#fff9c4] border-2 border-[#2d2d2d] shadow-[2px_2px_0px_0px_#2d2d2d] -rotate-3">
+                  <User className="h-6 w-6 text-[#2d2d2d]" strokeWidth={2.5} />
                 </div>
                 Basic Information
               </h2>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
                 <InputField 
                   label="Full Name" 
                   name="fullName"
                   placeholder="John Doe" 
-                  icon={<User size={18} />} 
+                  icon={<User size={18} strokeWidth={2.5} />} 
                   value={formData.fullName}
                   onChange={handleInputChange}
                 />
@@ -196,7 +202,7 @@ export default function Register() {
                   name="email"
                   type="email" 
                   placeholder="john@example.com" 
-                  icon={<Mail size={18} />} 
+                  icon={<Mail size={18} strokeWidth={2.5} />} 
                   value={formData.email}
                   onChange={handleInputChange}
                 />
@@ -204,26 +210,26 @@ export default function Register() {
                   label="WhatsApp Number" 
                   name="whatsapp"
                   placeholder="+91 9876543210" 
-                  icon={<Phone size={18} />} 
+                  icon={<Phone size={18} strokeWidth={2.5} />} 
                   value={formData.whatsapp}
                   onChange={handleInputChange}
                 />
                 <div className="flex flex-col gap-2">
-                  <label className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest ml-1">Country</label>
+                  <label className="text-sm font-heading font-bold text-[#2d2d2d] uppercase tracking-wide ml-1">Country</label>
                   <div className="relative group">
-                    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-indigo-500 z-10">
-                      <Globe size={18} />
+                    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2d2d2d] z-10">
+                      <Globe size={18} strokeWidth={2.5} />
                     </div>
                     <select
                       name="country"
                       value={formData.country}
                       onChange={handleInputChange}
-                      className="w-full pl-12 pr-10 py-4 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-white/5 focus:border-indigo-500 outline-none transition-all shadow-sm font-medium appearance-none"
+                      className="w-full pl-12 pr-10 py-4 rounded-wobbly bg-white border-[3px] border-[#2d2d2d] focus:border-[#2d5da1] focus:ring-2 focus:ring-[#2d5da1]/20 outline-none transition-all shadow-[2px_2px_0px_0px_#2d2d2d] font-sans font-bold text-lg text-[#2d2d2d] appearance-none"
                     >
                       <option value="">Select Country</option>
                       {countries.map(c => <option key={c} value={c}>{c}</option>)}
                     </select>
-                    <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" size={18} />
+                    <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-[#2d2d2d] pointer-events-none" size={18} strokeWidth={2.5} />
                   </div>
                 </div>
                 <div className="md:col-span-2">
@@ -231,7 +237,7 @@ export default function Register() {
                     label="Full Address" 
                     name="address"
                     placeholder="123 Street, City, State, ZIP" 
-                    icon={<MapPin size={18} />} 
+                    icon={<MapPin size={18} strokeWidth={2.5} />} 
                     value={formData.address}
                     onChange={handleInputChange}
                   />
@@ -241,10 +247,10 @@ export default function Register() {
               <div className="mt-12 flex justify-end">
                 <button 
                   onClick={nextStep}
-                  className="px-10 py-5 bg-gradient-to-r from-indigo-700 to-indigo-600 text-white rounded-[2rem] font-black text-lg flex items-center gap-3 hover:shadow-[0_10px_30px_rgba(79,70,229,0.3)] transition-all hover:-translate-y-0.5"
+                  className="px-10 py-4 bg-[#2d5da1] border-[3px] border-[#2d2d2d] text-white rounded-wobbly font-heading font-black text-2xl flex items-center gap-3 shadow-[4px_4px_0px_0px_#2d2d2d] hover:bg-[#ff4d4d] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_#2d2d2d] active:shadow-none active:translate-x-[4px] active:translate-y-[4px] transition-all"
                 >
                   Continue
-                  <ArrowRight size={20} />
+                  <ArrowRight size={24} strokeWidth={3} />
                 </button>
               </div>
             </motion.div>
@@ -256,22 +262,25 @@ export default function Register() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
-              className="p-8 md:p-12 rounded-[3.5rem] bg-white dark:bg-slate-900/40 border border-slate-100 dark:border-white/5 shadow-2xl backdrop-blur-xl"
+              className="p-8 md:p-12 rounded-wobbly-md bg-white border-[4px] border-[#2d2d2d] shadow-[8px_8px_0px_0px_#2d2d2d] relative -rotate-1"
             >
-              <h2 className="text-2xl font-black text-slate-900 dark:text-white mb-8 flex items-center gap-3">
-                <div className="p-2 rounded-xl bg-blue-50 dark:bg-blue-500/10">
-                  <Briefcase className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+              {/* Tape */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-8 bg-black/10 rotate-2 z-10 backdrop-blur-sm" />
+
+              <h2 className="text-3xl font-heading font-black text-[#2d2d2d] mb-8 flex items-center gap-3">
+                <div className="p-2 rounded-wobbly bg-[#e5e0d8] border-2 border-[#2d2d2d] shadow-[2px_2px_0px_0px_#2d2d2d] rotate-3">
+                  <Briefcase className="h-6 w-6 text-[#2d2d2d]" strokeWidth={2.5} />
                 </div>
                 Required Information
               </h2>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
                 <div className="md:col-span-2">
                   <InputField 
                     label="Projects Done (Links)" 
                     name="projects"
                     placeholder="link1.com, link2.com" 
-                    icon={<LinkIcon size={18} />} 
+                    icon={<LinkIcon size={18} strokeWidth={2.5} />} 
                     value={formData.projects}
                     onChange={handleInputChange}
                   />
@@ -280,7 +289,7 @@ export default function Register() {
                   label="GitHub Profile" 
                   name="github"
                   placeholder="github.com/username" 
-                  icon={<Github size={18} />} 
+                  icon={<Github size={18} strokeWidth={2.5} />} 
                   value={formData.github}
                   onChange={handleInputChange}
                 />
@@ -288,7 +297,7 @@ export default function Register() {
                   label="Years of Experience" 
                   name="experience"
                   placeholder="e.g. 2+ years" 
-                  icon={<Briefcase size={18} />} 
+                  icon={<Briefcase size={18} strokeWidth={2.5} />} 
                   value={formData.experience}
                   onChange={handleInputChange}
                 />
@@ -296,7 +305,7 @@ export default function Register() {
                   label="LinkedIn Profile" 
                   name="linkedin"
                   placeholder="linkedin.com/in/username" 
-                  icon={<Linkedin size={18} />} 
+                  icon={<Linkedin size={18} strokeWidth={2.5} />} 
                   value={formData.linkedin}
                   onChange={handleInputChange}
                 />
@@ -304,30 +313,30 @@ export default function Register() {
                   label="Portfolio Link" 
                   name="portfolio"
                   placeholder="yourportfolio.com" 
-                  icon={<LinkIcon size={18} />} 
+                  icon={<LinkIcon size={18} strokeWidth={2.5} />} 
                   value={formData.portfolio}
                   onChange={handleInputChange}
                 />
               </div>
 
-              <div className="mt-12 flex justify-between gap-4">
+              <div className="mt-12 flex flex-col md:flex-row justify-between gap-6 items-center">
                 <button 
                   onClick={prevStep}
-                  className="px-8 py-5 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-[2rem] font-bold text-lg flex items-center gap-3 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all"
+                  className="w-full md:w-auto px-8 py-4 bg-white border-[3px] border-[#2d2d2d] text-[#2d2d2d] rounded-wobbly font-heading font-bold text-xl flex justify-center items-center gap-3 hover:bg-[#e5e0d8] shadow-[4px_4px_0px_0px_#2d2d2d] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_#2d2d2d] active:shadow-none active:translate-x-[4px] active:translate-y-[4px] transition-all"
                 >
-                  <ArrowLeft size={20} />
+                  <ArrowLeft size={20} strokeWidth={3} />
                   Back
                 </button>
                 <button 
                   onClick={handleSubmit}
                   disabled={isSubmitting}
                   className={cn(
-                    "px-10 py-5 bg-gradient-to-r from-indigo-700 to-indigo-600 text-white rounded-[2rem] font-black text-lg flex items-center gap-3 hover:shadow-[0_10px_30px_rgba(79,70,229,0.3)] transition-all hover:-translate-y-0.5",
+                    "w-full md:w-auto px-10 py-4 bg-[#ff4d4d] border-[3px] border-[#2d2d2d] text-white rounded-wobbly font-heading font-black text-2xl flex justify-center items-center gap-3 shadow-[4px_4px_0px_0px_#2d2d2d] hover:bg-[#2d5da1] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_#2d2d2d] active:shadow-none active:translate-x-[4px] active:translate-y-[4px] transition-all",
                     isSubmitting && "opacity-70 pointer-events-none"
                   )}
                 >
-                  {isSubmitting ? "Submitting..." : "Complete Registration"}
-                  <CheckCircle2 size={20} />
+                  {isSubmitting ? "Submitting..." : "Complete"}
+                  <CheckCircle2 size={24} strokeWidth={3} />
                 </button>
               </div>
             </motion.div>
@@ -338,18 +347,23 @@ export default function Register() {
               key="step3"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="p-12 md:p-20 rounded-[4rem] bg-white dark:bg-slate-900/40 border border-slate-100 dark:border-white/5 shadow-2xl backdrop-blur-xl text-center"
+              className="p-12 md:p-20 rounded-wobbly-md bg-[#fff9c4] border-[4px] border-[#2d2d2d] shadow-[8px_8px_0px_0px_#2d2d2d] text-center rotate-2 relative"
             >
-              <div className="mb-8 inline-flex p-6 rounded-[2.5rem] bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
-                <CheckCircle2 size={64} />
+              {/* Thumbtack */}
+              <div className="absolute top-4 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-[#ff4d4d] border-2 border-[#2d2d2d] shadow-[2px_2px_0px_0px_rgba(45,45,45,0.5)] z-20">
+                <div className="absolute top-2 left-2 w-2 h-2 rounded-full bg-white/40"></div>
               </div>
-              <h2 className="text-4xl font-black text-slate-900 dark:text-white mb-4 tracking-tighter">Registration Complete!</h2>
-              <p className="text-lg text-slate-600 dark:text-slate-400 mb-12 font-medium max-w-md mx-auto">
+
+              <div className="mb-8 inline-flex p-6 rounded-wobbly bg-white border-[3px] border-[#2d2d2d] shadow-[4px_4px_0px_0px_#2d2d2d] text-[#2d5da1] -rotate-3 mt-4">
+                <CheckCircle2 size={64} strokeWidth={2.5} />
+              </div>
+              <h2 className="text-5xl font-heading font-black text-[#2d2d2d] mb-4">You're in!</h2>
+              <p className="text-xl text-[#2d2d2d] mb-12 font-sans font-bold max-w-md mx-auto leading-relaxed">
                 Thank you for joining the NeuroDev.in pioneer community. Check your email for next steps.
               </p>
               <a 
                 href="/"
-                className="px-12 py-5 bg-indigo-600 text-white rounded-full font-black text-xl hover:bg-indigo-700 transition-all shadow-xl inline-block"
+                className="px-12 py-4 bg-white border-[3px] border-[#2d2d2d] text-[#2d2d2d] rounded-wobbly font-heading font-black text-2xl hover:bg-[#ff4d4d] hover:text-white transition-all shadow-[4px_4px_0px_0px_#2d2d2d] hover:shadow-[2px_2px_0px_0px_#2d2d2d] hover:translate-x-[2px] hover:translate-y-[2px] active:shadow-none active:translate-x-[4px] active:translate-y-[4px] inline-block -rotate-1"
               >
                 Return to Home
               </a>

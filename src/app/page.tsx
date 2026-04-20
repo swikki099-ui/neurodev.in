@@ -43,13 +43,13 @@ export default function Home() {
       particleCount: 100,
       spread: 70,
       origin: { y: 0.6 },
-      colors: ["#4f46e5", "#818cf8", "#c7d2fe"],
+      colors: ["#ff4d4d", "#2d2d2d", "#2d5da1"],
     });
     console.log("submitted");
   };
 
   return (
-    <main className="relative min-h-screen w-full bg-slate-50 dark:bg-slate-950 overflow-x-hidden">
+    <main className="relative min-h-screen w-full bg-transparent overflow-x-hidden">
       <FloatingNav navItems={navItems} />
 
       {/* Hero Section with Highlight Effect and Fade-out transition */}
@@ -58,23 +58,35 @@ export default function Home() {
           containerClassName="h-screen w-full [mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)]"
         >
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: [20, -5, 0] }}
+            initial={{ opacity: 0, y: 20, rotate: -2 }}
+            animate={{ opacity: 1, y: [20, -5, 0], rotate: 0 }}
             transition={{ duration: 0.5, ease: [0.4, 0.0, 0.2, 1] }}
-            className="flex flex-col items-center justify-center px-4 text-center max-w-4xl mx-auto"
+            className="flex flex-col items-center justify-center px-4 text-center max-w-4xl mx-auto relative z-10"
           >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-slate-900 dark:text-white mb-6 tracking-tighter">
+            {/* Hand-drawn decoration */}
+            <motion.div 
+              animate={{ y: [0, -10, 0] }}
+              transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+              className="absolute -top-12 -right-12 hidden md:block"
+            >
+              <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50 10C27.9 10 10 27.9 10 50C10 72.1 27.9 90 50 90C72.1 90 90 72.1 90 50" stroke="#ff4d4d" strokeWidth="6" strokeLinecap="round" strokeDasharray="10 10"/>
+                <path d="M40 40L60 60M60 40L40 60" stroke="#ff4d4d" strokeWidth="6" strokeLinecap="round"/>
+              </svg>
+            </motion.div>
+
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-heading text-[#2d2d2d] mb-6 tracking-normal">
               Building the Future <br /> 
-              <span className="text-indigo-600 dark:text-indigo-400">
+              <span className="text-[#ff4d4d] inline-block -rotate-2">
                 Together.
               </span>
             </h1>
             
-            <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-10 max-w-2xl font-medium">
+            <p className="text-xl md:text-2xl text-[#2d2d2d] mb-10 max-w-2xl font-sans font-medium">
               A community of developers, creators, and AI enthusiasts working together to push the boundaries of what&apos;s possible in coding and technology.
             </p>
 
-            <div className="w-full max-w-md mx-auto" id="waitlist">
+            <div className="w-full max-w-md mx-auto relative p-2 bg-[#fff9c4] border-[3px] border-[#2d2d2d] rounded-wobbly shadow-[6px_6px_0px_0px_#2d2d2d] rotate-1" id="waitlist">
               <PlaceholdersAndVanishInput
                 placeholders={placeholders}
                 onChange={handleChange}
@@ -82,15 +94,17 @@ export default function Home() {
               />
             </div>
 
-            <p className="mt-4 text-sm text-slate-500 dark:text-slate-500 font-medium">
+            <p className="mt-6 text-lg text-[#2d2d2d] font-sans font-bold flex items-center justify-center gap-2">
+              <span className="w-8 h-[2px] bg-[#2d2d2d] rounded-full inline-block"></span>
               Join 500+ developers already on the waitlist.
+              <span className="w-8 h-[2px] bg-[#2d2d2d] rounded-full inline-block"></span>
             </p>
           </motion.div>
         </HeroHighlight>
       </section>
 
       {/* Technical Arsenal Section (Replacing Why Join) */}
-      <section id="features" className="relative py-24 px-4 overflow-hidden bg-white dark:bg-black border-y border-black/5 dark:border-white/5">
+      <section id="features" className="relative py-24 px-4 overflow-hidden bg-transparent">
         <div className="relative z-20">
           <TechnicalArsenal />
         </div>
@@ -102,7 +116,7 @@ export default function Home() {
       {/* Footer Addition */}
       <Footer />
 
-      <BackgroundBeams className="opacity-40" />
+      <BackgroundBeams className="opacity-10" />
     </main>
   );
 }

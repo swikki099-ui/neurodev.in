@@ -55,11 +55,11 @@ export const FloatingNav = ({
           duration: 0.2,
         }}
         className={cn(
-          "flex max-w-fit fixed top-10 inset-x-0 mx-auto z-[5000] items-center justify-center",
+          "flex max-w-fit fixed top-10 inset-x-0 mx-auto z-[5000] items-center justify-center -rotate-1 hover:rotate-0 transition-transform",
           className
         )}
       >
-        <div className="flex items-center justify-center gap-2 rounded-full border border-black/10 bg-white px-2 py-1.5 shadow-lg shadow-black/5 backdrop-blur-md dark:border-white/20 dark:bg-black">
+        <div className="flex items-center justify-center gap-2 rounded-wobbly border-[3px] border-[#2d2d2d] bg-white px-3 py-2 shadow-[4px_4px_0px_0px_#2d2d2d]">
           {/* Nav items container */}
           <div className="flex items-center gap-1">
             {navItems.map((navItem, idx: number) => (
@@ -67,20 +67,20 @@ export const FloatingNav = ({
                 key={`link-${idx}`}
                 href={navItem.link}
                 className={cn(
-                  "relative flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-300 dark:hover:bg-white/10 dark:hover:text-white"
+                  "relative flex items-center gap-1 rounded-wobbly px-4 py-2 text-lg font-heading font-bold text-[#2d2d2d] transition-all hover:bg-[#e5e0d8]"
                 )}
               >
                 <span className="block sm:hidden">{navItem.icon}</span>
-                <span className="hidden sm:block">{navItem.name}</span>
+                <span className="hidden sm:block hover:underline decoration-wavy decoration-[#ff4d4d] underline-offset-4">{navItem.name}</span>
               </Link>
             ))}
           </div>
 
           {/* Divider */}
-          <div className="h-5 w-px bg-neutral-200 dark:bg-white/10" />
+          <div className="h-6 w-[3px] border-l-[3px] border-dashed border-[#2d2d2d] mx-1" />
 
           {/* CTA Button */}
-          <Link href="/register" className="relative rounded-full bg-neutral-900 px-4 py-2 text-sm font-medium text-white transition-all hover:bg-neutral-800 hover:shadow-lg hover:shadow-neutral-900/20 dark:bg-white dark:text-black dark:hover:bg-neutral-100 dark:hover:shadow-white/20">
+          <Link href="/register" className="relative rounded-wobbly bg-[#fff9c4] border-2 border-[#2d2d2d] px-5 py-2 text-lg font-heading font-bold text-[#2d2d2d] shadow-[2px_2px_0px_0px_#2d2d2d] transition-all hover:bg-[#ff4d4d] hover:text-white hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none active:translate-x-[2px] active:translate-y-[2px] active:shadow-none">
             <span>Register</span>
           </Link>
         </div>
